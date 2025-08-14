@@ -3,9 +3,9 @@
 }
 
 :root {
-  --background-color: #0b0b0e;
+  --background-color: #0b0e0b;
   --text-color: #ffffff;
-  --gamba-ui-primary-color: #9564ff;
+  --gamba-ui-primary-color: #64ff92;
 
   --gamba-ui-border-radius: 10px;
 
@@ -13,9 +13,9 @@
   --gamba-ui-button-default-background-hover: #11111d;
   --gamba-ui-button-default-color: white;
 
-  --gamba-ui-button-main-background: #8851ff;
-  --gamba-ui-button-main-color: white;
-  --gamba-ui-button-main-background-hover: #9564ff;
+  --gamba-ui-button-main-background: #51ff8b;
+  --gamba-ui-button-main-color: rgb(0, 0, 0);
+  --gamba-ui-button-main-background-hover: #64ff92;
 
   --gamba-ui-input-background: #0e0e16;
   --gamba-ui-input-color: #ffffff;

@@ -4,6 +4,7 @@ import { SlideSection } from '../../components/Slider'
 import { GAMES } from '../../games'
 import { GameCard } from './GameCard'
 import { WelcomeBanner } from './WelcomeBanner'
+import { Navigation } from './Navigation'
 // src/sections/Dashboard/Dashboard.tsx
 import FeaturedInlineGame from './FeaturedInlineGame'
 
@@ -51,6 +52,7 @@ export default function Dashboard() {
   return (
     <>
       <WelcomeBanner />
+      <Navigation />
       <FeaturedInlineGame />
       <h2 style={{ textAlign: 'center' }}>Games</h2>
       <GameGrid />

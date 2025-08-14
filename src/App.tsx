@@ -15,6 +15,7 @@ import Header from './sections/Header'
 import RecentPlays from './sections/RecentPlays/RecentPlays'
 import Toasts from './sections/Toasts'
 import TrollBox from './components/TrollBox'
+import Footer from './components/Footer'
 
 import { MainWrapper, TosInner, TosWrapper } from './styles'
 
@@ -90,6 +91,7 @@ export default function App() {
       </MainWrapper>
 
       {ENABLE_TROLLBOX && <TrollBox />}
+      <Footer />
     </>
   )
 }

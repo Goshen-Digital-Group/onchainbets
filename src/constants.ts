@@ -2,11 +2,11 @@ import { PublicKey } from '@solana/web3.js'
 import { FAKE_TOKEN_MINT, PoolToken, TokenMeta, makeHeliusTokenFetcher } from 'gamba-react-ui-v2'
 
 // Get RPC from the .env file or default to the public RPC.
-export const RPC_ENDPOINT = import.meta.env.VITE_RPC_ENDPOINT ?? 'https://api.mainnet-beta.solana.com'
+export const RPC_ENDPOINT = import.meta.env.VITE_RPC_ENDPOINT;
 
 // Solana address that will receive fees when somebody plays on this platform
 export const PLATFORM_CREATOR_ADDRESS = new PublicKey(
-  'V2grJiwjs25iJYqumbHyKo5MTK7SFqZSdmoRaj8QWb9',
+  'cobw9YgxENUhGCLZ3TsEpXCtyJCBKNWFV72b8K973zx',
 )
 
 // Gamba explorer URL - Appears in RecentPlays
@@ -88,7 +88,7 @@ export const TOS_HTML = `
   <p><b>3. Risk Acknowledgement:</b> Games involve risk; no guaranteed winnings.</p>
   <p><b>4. No Warranty:</b> Games provided "as is"; operate randomly.</p>
   <p><b>5. Limitation of Liability:</b> We're not liable for damages.</p>
-  <p><b>6. Licensing Disclaimer:</b> Not a licensed casino; for simulation only.</p>
+  <p><b>6. Licensing Disclaimer:</b> Not a licensed casino.</p>
   <p><b>7. Fair Play:</b> Games are conducted fairly and transparently.</p>
   <p><b>8. Data Privacy:</b> Your privacy is important to us.</p>
   <p><b>9. Responsible Gaming:</b> Play responsibly; seek help if needed.</p>
@@ -110,9 +110,9 @@ export const TOKEN_METADATA_FETCHER = (
 )()
 
 export const ENABLE_LEADERBOARD = true 
-export const ENABLE_TROLLBOX = false // Requires setup in vercel (check tutorial in discord)
+export const ENABLE_TROLLBOX = true // Requires setup in vercel (check tutorial in discord)
 
 /** If true, the featured game is fully playable inline on the dashboard */
-export const FEATURED_GAME_INLINE = false 
+export const FEATURED_GAME_INLINE = true 
 export const FEATURED_GAME_ID: string | undefined = 'jackpot'   // ← put game id or leave undefined
 
