@@ -59,8 +59,6 @@ export const POOLS = [
   lp(FAKE_TOKEN_MINT),
   lp("So11111111111111111111111111111111111111112"),
   lp("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"),
-  lp("JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN"),
-  lp("DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263"),
 ];
 
 // The default token to be selected
@@ -133,15 +131,6 @@ export const FETCH_TOKEN_METADATA: TokenMetaWithMinted[] = [
     baseWager: 1e9,
     decimals: 9,
     usdPrice: 0.00002806,
-  },
-  {
-    mint: FAKE_TOKEN_MINT,
-    name: "TEST",
-    symbol: "TEST",
-    image: "/fakemoney.png",
-    baseWager: 1e9,
-    decimals: 9,
-    usdPrice: 1,
   },
 ];
 
@@ -218,3 +207,6 @@ export const ENABLE_TROLLBOX = true; // Requires setup in vercel (check tutorial
 /** If true, the featured game is fully playable inline on the dashboard */
 export const FEATURED_GAME_INLINE = true;
 export const FEATURED_GAME_ID: string | undefined = "jackpot"; // ← put game id or leave undefined
+
+export { FAKE_TOKEN_MINT };
+

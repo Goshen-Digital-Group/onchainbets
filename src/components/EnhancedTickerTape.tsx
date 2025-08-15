@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { FETCH_TOKEN_METADATA } from "../constants";
+import { FETCH_TOKEN_METADATA, FAKE_TOKEN_MINT } from "../constants";
 import styled, { keyframes, css } from "styled-components";
 import { useTokenPriceService } from "../hooks/useTokenPriceService";
 
@@ -66,8 +66,10 @@ const TokenItem = styled.span<{
 export function EnhancedTickerTape() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  // Use only FETCH_TOKEN_METADATA for ticker tape
-  const tokenMetadata = FETCH_TOKEN_METADATA;
+  // Use only FETCH_TOKEN_METADATA for ticker tape, filter out FAKE_TOKEN_MINT
+  const tokenMetadata = FETCH_TOKEN_METADATA.filter(
+    (token) => token.mint.toBase58() !== FAKE_TOKEN_MINT.toBase58()
+  );
 
   // Use our enhanced service for source information
   const { getTokenPriceData } = useTokenPriceService();
