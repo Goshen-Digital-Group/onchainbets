@@ -11,13 +11,16 @@ export const MainWrapper = styled.div`
   flex-direction: column;
   gap: 20px;
   margin-top: 60px;
+  padding-bottom: 70px; /* Ensure content above footer is visible */
   @media (min-width: 600px) {
     padding: 20px;
     width: 1000px;
+    padding-bottom: 70px;
   }
   @media (min-width: 1280px) {
     padding: 20px;
     width: 1100px;
+    padding-bottom: 70px;
   }
 `
 

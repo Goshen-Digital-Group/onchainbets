@@ -35,7 +35,7 @@ const fadeIn = keyframes`
 
 const Wrapper = styled.div<{ $isMinimized: boolean }>`
   position: fixed;
-  bottom: 20px;
+  bottom: 80px;
   right: 20px;
   z-index: 998;
   border-radius: ${({ $isMinimized }) => ($isMinimized ? '50%' : '12px')};
@@ -73,14 +73,14 @@ const Wrapper = styled.div<{ $isMinimized: boolean }>`
     ${({ $isMinimized }) =>
       $isMinimized
         ? `
-      bottom: 16px;
+      bottom: 76px;
       right: 16px;
     `
         : `
       width: calc(100% - 32px);
       max-width: 300px;
       max-height: 200px;
-      bottom: 16px;
+      bottom: 76px;
       right: 16px;
     `}
   }

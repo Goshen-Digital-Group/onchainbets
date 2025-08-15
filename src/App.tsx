@@ -88,10 +88,12 @@ export default function App() {
 
         <h2 style={{ textAlign: 'center' }}>Recent Plays</h2>
         <RecentPlays />
+        {ENABLE_TROLLBOX && <TrollBox />}
       </MainWrapper>
 
-      {ENABLE_TROLLBOX && <TrollBox />}
+      
       <Footer />
+      
     </>
   )
 }

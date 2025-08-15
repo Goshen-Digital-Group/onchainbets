@@ -29,7 +29,7 @@ const Panel = styled.div`
   border: 1px solid #202533;
   border-radius: 12px;
   padding: 16px;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+  box-shadow: 0 6px 24px rgba(214, 186, 186, 0.25);
 `
 
 const PanelHeader = styled.div`
