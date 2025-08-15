@@ -1,8 +1,7 @@
-import * as ReactRoot from 'react'
-console.log('🏷️ App React identity:', ReactRoot)
 
-import * as ReactLocal from 'react'
-console.log('🏷️ useConnection React identity:', ReactLocal)
+// Polyfill Buffer for browser (fixes _bn errors)
+import { Buffer } from 'buffer'
+window.Buffer = Buffer
 
 
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react'

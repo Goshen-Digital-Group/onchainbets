@@ -382,8 +382,8 @@ const DataSourceBadge = styled.span<{ $isLive: boolean }>`
 
 const TrendingBadge = styled.span`
   position: absolute;
-  top: -4px;
-  right: -4px;
+  left: 15px;
+  top: -10px;
   font-size: 12px;
   background: linear-gradient(45deg, #fffb00ff, #ff6b35);
   color: #000;

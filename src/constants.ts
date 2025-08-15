@@ -176,29 +176,17 @@ export async function updateTokenPrices() {
       return "coingecko";
     });
 
-  // Promise for Helius fetch (if available)
-  let heliusPromise: Promise<string> = Promise.reject("No Helius");
-  // Helius API key is now server-only. Fetch token metadata via /api/helius endpoint if needed.
-
-  // Race both, prefer CoinGecko if both succeed
+  // Only use CoinGecko for token prices
   try {
-    const winner = await Promise.race([coingeckoPromise, heliusPromise]);
-    // If Helius wins, still update with CoinGecko when it resolves
-    if (winner === "helius") {
-      coingeckoPromise.catch(() => {}); // ignore errors
-    }
+    await coingeckoPromise;
   } catch (error) {
     if (typeof window !== "undefined") window.HELIUS_UNAVAILABLE = true;
-    console.error("Failed to fetch token prices from both sources:", error);
+    console.error("Failed to fetch token prices from CoinGecko:", error);
   }
 }
 
 export const TOKEN_METADATA_FETCHER = (() => {
-  if (import.meta.env.VITE_HELIUS_API_KEY) {
-    return makeHeliusTokenFetcher(import.meta.env.VITE_HELIUS_API_KEY, {
-      dollarBaseWager: 1,
-    });
-  }
+  // Only use CoinGecko, do not use Helius
 })();
 
 export const ENABLE_LEADERBOARD = true;
