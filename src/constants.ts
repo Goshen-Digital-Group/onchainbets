@@ -70,8 +70,31 @@ export const DEFAULT_POOL = POOLS[0];
  * List of token metadata for the supported tokens
  * Alternatively, we can provide a fetcher method to automatically fetch metdata. See TOKEN_METADATA_FETCHER below.
  */
+
+
+export const TOKEN_METADATA: (Partial<TokenMeta> & {mint: PublicKey})[] = [
+  {
+    mint: FAKE_TOKEN_MINT,
+    name: 'Fake',
+    symbol: 'FAKE',
+    image: '/fakemoney.png',
+    baseWager: 1e9,
+    decimals: 9,
+    usdPrice: 0,
+  },
+  {
+    mint: new PublicKey('85VBFQZC9TZkfaptBWjvUw7YbZjy52A6mjtPGjstQAmQ'),
+    name: 'W',
+    symbol: 'Wormhole',
+    image: 'https://wormhole.com/token.png',
+    baseWager: 1e6,
+    decimals: 6,
+    usdPrice: 0,
+  },
+]
+
 type TokenMetaWithMinted = Partial<TokenMeta> & { mint: PublicKey; minted?: boolean };
-export const TOKEN_METADATA: TokenMetaWithMinted[] = [
+export const FETCH_TOKEN_METADATA: TokenMetaWithMinted[] = [
   {
     mint: new PublicKey("So11111111111111111111111111111111111111112"),
     name: "SOLANA",
@@ -157,7 +180,7 @@ export async function updateTokenPrices() {
   const coingeckoPromise = fetch(coingeckoUrl)
     .then((res) => res.json())
     .then((data) => {
-      TOKEN_METADATA.forEach((token) => {
+      FETCH_TOKEN_METADATA.forEach((token) => {
         const mint = token.mint.toBase58();
         if (mint === FAKE_TOKEN_MINT.toBase58()) {
           token.usdPrice = undefined;
@@ -171,7 +194,7 @@ export async function updateTokenPrices() {
       if (typeof window !== "undefined") window.HELIUS_UNAVAILABLE = false;
       console.log(
         "Updated TOKEN_METADATA with CoinGecko prices:",
-        TOKEN_METADATA
+        FETCH_TOKEN_METADATA
       );
       return "coingecko";
     });

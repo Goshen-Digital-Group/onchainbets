@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect, useMemo } from "react";
-import { useTokenPrices } from "../hooks/useTokenPrices";
+import { FETCH_TOKEN_METADATA } from "../constants";
 import styled, { keyframes, css } from "styled-components";
 import { useTokenPriceService } from "../hooks/useTokenPriceService";
 
@@ -67,8 +66,8 @@ const TokenItem = styled.span<{
 export function EnhancedTickerTape() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  // Use the existing Gamba hook for basic token data
-  const tokenMetadata = useTokenPrices();
+  // Use only FETCH_TOKEN_METADATA for ticker tape
+  const tokenMetadata = FETCH_TOKEN_METADATA;
 
   // Use our enhanced service for source information
   const { getTokenPriceData } = useTokenPriceService();
