@@ -6,23 +6,54 @@ export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  padding: 1.5rem;
+  padding: 1.1rem 1rem;
   width: 100%;
-  max-width: 420px;            /* same width as staking modal */
-  margin: auto;
-
-  /* let the outer <Modal> wrapper (#15151f, 10‑px radius) provide the “glass”;  
-     we only need scroll behaviour */
+  max-width: 380px;
+  margin: 100px auto 0 auto;
+  border-radius: 18px;
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(0, 255, 34, 0.3);
+  color: white;
+  position: relative;
+  box-shadow: 0 0 40px rgba(0, 255, 34, 0.12);
+  animation: neonPulse 3s ease-in-out infinite alternate;
   max-height: calc(90vh - 4rem);
   overflow-y: auto;
-
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 20%, rgba(0, 255, 34, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(0, 255, 42, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+    border-radius: 24px;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #00ff37ff, #00ff0dff, #15ff00ff);
+    background-size: 300% 100%;
+    animation: moveGradient 4s linear infinite;
+    border-radius: 24px 24px 0 0;
+    z-index: 1;
+  }
   &::-webkit-scrollbar          { width: 6px; }
   &::-webkit-scrollbar-thumb    { background: rgba(255,255,255,0.2); border-radius: 3px; }
   &::-webkit-scrollbar-track    { background: transparent; }
-
   @media (max-width: 480px) {
-    padding: 1rem;
-    max-height: calc(95vh - 2rem);
+    padding: 0.75rem 0.5rem;
+    margin: 60px 0.25rem 0.25rem 0.25rem;
+    max-width: 98vw;
+    border-radius: 10px;
   }
 `
 

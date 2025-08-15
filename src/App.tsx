@@ -5,7 +5,9 @@ import { GambaUi } from 'gamba-react-ui-v2'
 import { useTransactionError } from 'gamba-react-v2'
 
 import { Modal } from './components/Modal'
-import { TOS_HTML, ENABLE_TROLLBOX } from './constants'
+import { TOS_HTML, ENABLE_TROLLBOX as RAW_ENABLE_TROLLBOX } from './constants'
+
+const ENABLE_TROLLBOX = typeof RAW_ENABLE_TROLLBOX === 'boolean' ? RAW_ENABLE_TROLLBOX : false;
 import { useToast } from './hooks/useToast'
 import { useUserStore } from './hooks/useUserStore'
 
@@ -15,6 +17,7 @@ import Header from './sections/Header'
 import RecentPlays from './sections/RecentPlays/RecentPlays'
 import Toasts from './sections/Toasts'
 import TrollBox from './components/TrollBox'
+import Footer from './components/Footer'
 
 import { MainWrapper, TosInner, TosWrapper } from './styles'
 
@@ -87,9 +90,12 @@ export default function App() {
 
         <h2 style={{ textAlign: 'center' }}>Recent Plays</h2>
         <RecentPlays />
+        {ENABLE_TROLLBOX && <TrollBox />}
       </MainWrapper>
 
-      {ENABLE_TROLLBOX && <TrollBox />}
+      
+      <Footer />
+      
     </>
   )
 }

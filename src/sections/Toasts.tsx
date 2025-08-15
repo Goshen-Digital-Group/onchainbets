@@ -93,18 +93,18 @@ const StyledTimer = styled.div<{$ticking: boolean}>`
     top: 0;
     width: 100%;
     height: 5px;
-    background: #9564ff;
+    background: #64ff86ff;
   }
 `
 
 function Toast({ toast }: {toast: TToast}) {
-  const timeout = React.useRef<NodeJS.Timer>()
+  const timeout = React.useRef<number | undefined>()
   const discard = useToastStore((state) => state.discard)
   const [ticking, setTicking] = React.useState(true)
 
   React.useLayoutEffect(
     () => {
-      timeout.current = setTimeout(() => {
+      timeout.current = window.setTimeout(() => {
         discard(toast.id)
       }, 10000)
       return () => clearTimeout(timeout.current)
@@ -114,11 +114,13 @@ function Toast({ toast }: {toast: TToast}) {
 
   const pauseTimer = () => {
     setTicking(false)
-    clearTimeout(timeout.current)
+    if (timeout.current !== undefined) {
+      clearTimeout(timeout.current)
+    }
   }
   const resumeTimer = () => {
     setTicking(true)
-    timeout.current = setTimeout(() => {
+    timeout.current = window.setTimeout(() => {
       discard(toast.id)
     }, 10000)
   }

@@ -112,7 +112,7 @@ export const CellButton = styled.button<{status: CellStatus, selected: boolean}>
   position: relative;
   align-items: center;
   justify-content: center;
-  background: #9358ff;
+  background: #51ff8b;
   background-size: 100%;
   border: none;
   border-bottom: 5px solid #00000055;

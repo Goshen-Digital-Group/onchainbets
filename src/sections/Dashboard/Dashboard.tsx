@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import { SlideSection } from '../../components/Slider'
 import { GAMES } from '../../games'
 import { GameCard } from './GameCard'
-import { WelcomeBanner } from './WelcomeBanner'
 // src/sections/Dashboard/Dashboard.tsx
 import FeaturedInlineGame from './FeaturedInlineGame'
+import { EnhancedTickerTape } from '../../components/EnhancedTickerTape'
 
 
 
@@ -50,7 +50,7 @@ export function GameGrid() {
 export default function Dashboard() {
   return (
     <>
-      <WelcomeBanner />
+      <EnhancedTickerTape />
       <FeaturedInlineGame />
       <h2 style={{ textAlign: 'center' }}>Games</h2>
       <GameGrid />
