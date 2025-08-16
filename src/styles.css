@@ -32,7 +32,8 @@ h1, h2 {
 }
 
 body {
-  background: var(--background-color);
+  background: url('/Background/bg.svg') no-repeat center center;
+  background-size: cover;
   color: var(--text-color);
   cursor: default;
   margin: 0;
