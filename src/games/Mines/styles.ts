@@ -5,13 +5,13 @@ const tickingAnimation = keyframes`
   0%, 50%, 100% {
     transform: scale(1);
     filter: brightness(1);
-    /* background: #764cc4; */
+    /* background: #5ac44cff; */
     /* box-shadow: 0 0 1px 1px #ffffff00; */
   }
   25% {
     transform: scale(0.95);
     filter: brightness(1.5);
-    /* background: #945ef7; */
+    /* background: #78f75eff; */
     /* box-shadow: 0 0 1px 1px #ffffff99; */
   }
 `
@@ -131,7 +131,7 @@ export const CellButton = styled.button<{status: CellStatus, selected: boolean}>
   `}
 
   ${(props) => props.status === 'gold' && css`
-    color: white;
+    color: black;
     animation: ${goldReveal} .5s ease;
     opacity: 1;
   `}

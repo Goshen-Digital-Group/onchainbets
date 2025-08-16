@@ -1,43 +1,47 @@
 // src/sections/Game/Game.styles.ts
-import styled, { css, keyframes } from 'styled-components'
+import styled, { css, keyframes } from "styled-components";
 
 const splashAnimation = keyframes`
   0% { opacity: 1; }
   30%, 75% { opacity: 1; }
   100% { opacity: 0; }
-`
+`;
 
 export const loadingAnimation = keyframes`
   0% { left: 0%; transform: translateX(-100%); }
   100% { left: 100%; transform: translateX(50%); }
-`
+`;
 
 export const Container = styled.div`
   width: 100%;
   position: relative;
   display: grid;
   gap: 5px;
-`
+`;
 
 export const SettingControls = styled.div`
   & > button {
     all: unset;
     cursor: pointer;
-    opacity: .2;
-    transition: opacity .2s;
+    opacity: 0.2;
+    transition: opacity 0.2s;
     padding: 5px;
     text-shadow: 0 0 1px #00ff2266;
-    &:hover { opacity: 1; }
+    &:hover {
+      opacity: 1;
+    }
   }
-`
+`;
 
 export const Splash = styled.div`
   pointer-events: none;
   position: absolute;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0;
-  animation: ${splashAnimation} .75s ease;
+  animation: ${splashAnimation} 0.75s ease;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,7 +49,7 @@ export const Splash = styled.div`
   background: #1f5300ff;
   font-size: 42px;
   font-weight: bold;
-`
+`;
 
 export const Screen = styled.div`
   position: relative;
@@ -53,10 +57,12 @@ export const Screen = styled.div`
   background: #023500ff;
   border-radius: 10px;
   overflow: hidden;
-  transition: height .2s ease;
+  transition: height 0.2s ease;
   height: 600px;
-  @media (max-width: 700px) { height: 600px; }
-`
+  @media (max-width: 700px) {
+    height: 600px;
+  }
+`;
 
 export const IconButton = styled.button`
   background: none;
@@ -69,10 +75,12 @@ export const IconButton = styled.button`
   font-size: 16px;
   border-radius: 10px;
   color: white;
-  &:hover { background: #ffffff22; }
-`
+  &:hover {
+    background: #ffffff22;
+  }
+`;
 
-export const StyledLoadingIndicator = styled.div<{$active: boolean}>`
+export const StyledLoadingIndicator = styled.div<{ $active: boolean }>`
   position: relative;
   height: 3px;
   width: 100%;
@@ -81,14 +89,19 @@ export const StyledLoadingIndicator = styled.div<{$active: boolean}>`
   &:after {
     content: " ";
     position: absolute;
-    width: 25%; height: 100%;
-    animation: ${loadingAnimation} ease infinite .5s;
+    width: 25%;
+    height: 100%;
+    animation: ${loadingAnimation} ease infinite 0.5s;
     opacity: 0;
     background: #76ff64ff;
-    transition: opacity .5s;
-    ${(props) => props.$active && css`opacity: 1;`}
+    transition: opacity 0.5s;
+    ${(props) =>
+      props.$active &&
+      css`
+        opacity: 1;
+      `}
   }
-`
+`;
 
 export const Controls = styled.div`
   width: 100%;
@@ -111,25 +124,26 @@ export const Controls = styled.div`
   @media (min-width: 800px) {
     height: 80px;
   }
-`
+`;
 
 export const MetaControls = styled.div`
   position: absolute;
-  bottom: 0; left: 0;
+  bottom: 0;
+  left: 0;
   width: 100%;
   padding: 10px;
   display: flex;
   align-items: center;
   gap: 10px;
   z-index: 6;
-`
+`;
 
 export const spinnerAnimation = keyframes`
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
-`
+`;
 
-export const Spinner = styled.div<{$small?: boolean}>`
+export const Spinner = styled.div<{ $small?: boolean }>`
   --spinner-size: 1em;
   --spinner-border: 2px;
   --color: white;
@@ -143,4 +157,4 @@ export const Spinner = styled.div<{$small?: boolean}>`
   height: var(--spinner-size);
   aspect-ratio: 1/1;
   border-radius: 50%;
-`
+`;

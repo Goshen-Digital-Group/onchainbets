@@ -225,12 +225,12 @@ export default function Header() {
               </MobileMenuButton>
               {mobileMenuOpen && (
                 <Modal onClose={() => setMobileMenuOpen(false)}>
-                    <MobileMenuDropdown
+                  <MobileMenuDropdown
                     style={{
                       position: "static",
                       marginTop: 0,
                       background:
-                      "linear-gradient(135deg, #001f0f 0%, #003d1f 100%)",
+                        "linear-gradient(135deg, #001f0f 0%, #003d1f 100%)",
                       borderRadius: "18px",
                       boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
                       border: "2px solid #00ff37",
@@ -238,67 +238,66 @@ export default function Header() {
                       maxWidth: "340px",
                       width: "100%",
                     }}
-                    >
+                  >
                     <div
                       style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      padding: "20px 0",
-                      width: "100%",
-                      }}
-                    >
-                      <div
-                      style={{
-                        width: "80%",
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
-                        
+                        padding: "20px 0",
+                        width: "100%",
                       }}
+                    >
+                      <div
+                        style={{
+                          width: "80%",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
                       >
-                      <UserButton />
+                        <UserButton />
                       </div>
                     </div>
                     {pool.jackpotBalance > 0 && (
                       <div
-                      style={{
-                        width: "80%",
-                        margin: "0 auto",
-                        display: "flex",
-                        justifyContent: "center",
-                      }}
-                      >
-                      <JackpotBonus
-                        onClick={() => {
-                        setJackpotHelp(true);
-                        setMobileMenuOpen(false);
+                        style={{
+                          width: "80%",
+                          margin: "0 auto",
+                          display: "flex",
+                          justifyContent: "center",
                         }}
                       >
-                        💰
-                        <TokenValue amount={pool.jackpotBalance} />
-                      </JackpotBonus>
+                        <JackpotBonus
+                          onClick={() => {
+                            setJackpotHelp(true);
+                            setMobileMenuOpen(false);
+                          }}
+                        >
+                          💰
+                          <TokenValue amount={pool.jackpotBalance} />
+                        </JackpotBonus>
                       </div>
                     )}
 
                     {balance.bonusBalance > 0 && (
                       <Bonus
-                      onClick={() => setBonusHelp(true)}
-                      aria-label="Bonus info"
+                        onClick={() => setBonusHelp(true)}
+                        aria-label="Bonus info"
                       >
-                      ✨
-                      <TokenValue amount={balance.bonusBalance} />
+                        ✨
+                        <TokenValue amount={balance.bonusBalance} />
                       </Bonus>
                     )}
                     <GambaUi.Button
                       onClick={() => {
-                      setShowLeaderboard(true);
-                      setMobileMenuOpen(false);
+                        setShowLeaderboard(true);
+                        setMobileMenuOpen(false);
                       }}
                     >
                       Leaderboard
                     </GambaUi.Button>
-                    </MobileMenuDropdown>
+                  </MobileMenuDropdown>
                 </Modal>
               )}
             </MobileMenu>

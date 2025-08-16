@@ -1,4 +1,4 @@
-import { FETCH_TOKEN_METADATA, updateTokenPrices } from '../constants';
+import { FETCH_TOKEN_METADATA, updateTokenPrices } from "../constants";
 
 export interface TokenPrice {
   mintAddress: string;
@@ -6,7 +6,7 @@ export interface TokenPrice {
   currentPrice: number;
   isLivePrice: boolean; // true if from API, false if fallback
   lastUpdated: number;
-  source: 'api' | 'fallback' | 'unavailable';
+  source: "api" | "fallback" | "unavailable";
 }
 
 class TokenPriceService {
@@ -46,14 +46,14 @@ class TokenPriceService {
    */
   async updatePrices(): Promise<void> {
     if (this.isUpdating) return;
-    
+
     this.isUpdating = true;
     const now = Date.now();
 
     try {
       // Store original prices for comparison
       const originalPrices = new Map<string, number>();
-      FETCH_TOKEN_METADATA.forEach(token => {
+      FETCH_TOKEN_METADATA.forEach((token) => {
         const mintAddress = token.mint.toBase58();
         if (token.usdPrice) {
           originalPrices.set(mintAddress, token.usdPrice);
@@ -64,9 +64,9 @@ class TokenPriceService {
       await updateTokenPrices();
 
       // Check what we got and create price objects
-      FETCH_TOKEN_METADATA.forEach(token => {
+      FETCH_TOKEN_METADATA.forEach((token) => {
         const mintAddress = token.mint.toBase58();
-        const symbol = token.symbol || 'UNK';
+        const symbol = token.symbol || "UNK";
         const originalPrice = originalPrices.get(mintAddress);
         const currentApiPrice = token.usdPrice;
 
@@ -80,7 +80,7 @@ class TokenPriceService {
             currentPrice: currentApiPrice,
             isLivePrice: true,
             lastUpdated: now,
-            source: 'api',
+            source: "api",
           };
         } else if (originalPrice) {
           // Fallback to constants price
@@ -90,7 +90,7 @@ class TokenPriceService {
             currentPrice: originalPrice,
             isLivePrice: false,
             lastUpdated: now,
-            source: 'fallback',
+            source: "fallback",
           };
         } else {
           // No price available
@@ -100,7 +100,7 @@ class TokenPriceService {
             currentPrice: 0,
             isLivePrice: false,
             lastUpdated: now,
-            source: 'unavailable',
+            source: "unavailable",
           };
         }
 
@@ -108,15 +108,14 @@ class TokenPriceService {
       });
 
       this.lastFetchTime = now;
-      console.log('🔄 Price service updated:', this.priceCache.size, 'tokens');
-      
+      console.log("🔄 Price service updated:", this.priceCache.size, "tokens");
     } catch (error) {
-      console.error('💥 Failed to update token prices:', error);
-      
+      console.error("💥 Failed to update token prices:", error);
+
       // If API fails completely, use fallback prices from constants
-      FETCH_TOKEN_METADATA.forEach(token => {
+      FETCH_TOKEN_METADATA.forEach((token) => {
         const mintAddress = token.mint.toBase58();
-        const symbol = token.symbol || 'UNK';
+        const symbol = token.symbol || "UNK";
         const fallbackPrice = this.getFallbackPrice(mintAddress);
 
         if (fallbackPrice > 0) {
@@ -126,12 +125,11 @@ class TokenPriceService {
             currentPrice: fallbackPrice,
             isLivePrice: false,
             lastUpdated: now,
-            source: 'fallback',
+            source: "fallback",
           };
           this.priceCache.set(mintAddress, priceData);
         }
       });
-      
     } finally {
       this.isUpdating = false;
     }
@@ -141,14 +139,19 @@ class TokenPriceService {
    * Get fallback price from constants
    */
   private getFallbackPrice(mintAddress: string): number {
-    const token = FETCH_TOKEN_METADATA.find(t => t.mint.toBase58() === mintAddress);
+    const token = FETCH_TOKEN_METADATA.find(
+      (t) => t.mint.toBase58() === mintAddress
+    );
     return token?.usdPrice || 0;
   }
 
   /**
    * Get price change between current and previous
    */
-  getPriceChange(mintAddress: string, previousPrice: number): {
+  getPriceChange(
+    mintAddress: string,
+    previousPrice: number
+  ): {
     currentPrice: number;
     change: number;
     percentageChange: number;
@@ -158,7 +161,8 @@ class TokenPriceService {
     if (!priceData || priceData.currentPrice <= 0) return null;
 
     const change = priceData.currentPrice - previousPrice;
-    const percentageChange = previousPrice > 0 ? (change / previousPrice) * 100 : 0;
+    const percentageChange =
+      previousPrice > 0 ? (change / previousPrice) * 100 : 0;
 
     return {
       currentPrice: priceData.currentPrice,
@@ -179,9 +183,9 @@ class TokenPriceService {
   /**
    * Get the data source for a token price
    */
-  getPriceSource(mintAddress: string): 'api' | 'fallback' | 'unavailable' {
+  getPriceSource(mintAddress: string): "api" | "fallback" | "unavailable" {
     const priceData = this.priceCache.get(mintAddress);
-    return priceData?.source || 'unavailable';
+    return priceData?.source || "unavailable";
   }
 
   /**

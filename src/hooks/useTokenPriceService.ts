@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { tokenPriceService, TokenPrice } from '../services/TokenPriceService';
+import { useState, useEffect } from "react";
+import { tokenPriceService, TokenPrice } from "../services/TokenPriceService";
 
 export const useTokenPriceService = () => {
   const [tokenPrices, setTokenPrices] = useState<TokenPrice[]>([]);
@@ -18,7 +18,7 @@ export const useTokenPriceService = () => {
           setIsLoading(false);
         }
       } catch (error) {
-        console.error('Failed to fetch token prices:', error);
+        console.error("Failed to fetch token prices:", error);
         if (isMounted) {
           setIsLoading(false);
         }
@@ -38,13 +38,15 @@ export const useTokenPriceService = () => {
   }, []);
 
   const getTokenPriceData = (mintAddress: string): TokenPrice | null => {
-    return tokenPrices.find(price => price.mintAddress === mintAddress) || null;
+    return (
+      tokenPrices.find((price) => price.mintAddress === mintAddress) || null
+    );
   };
 
   return {
     tokenPrices,
     getTokenPriceData,
     isLoading,
-    lastUpdate
+    lastUpdate,
   };
 };

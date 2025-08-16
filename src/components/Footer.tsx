@@ -85,13 +85,14 @@ export default function Footer() {
       <RightSection>
         <SocialLinks>
           <SocialIcon
-            url="#"
+            url="https://x.com/Onchainbetsfun"
             network="twitter"
             bgColor="#ffffffff"
             fgColor="#000000ff"
             style={{ height: 28, width: 28, margin: "0 10px" }}
             label="Twitter Community"
           />
+          {/*
           <SocialIcon
             url="#"
             network="discord"
@@ -100,8 +101,9 @@ export default function Footer() {
             style={{ height: 28, width: 28, margin: "0 10px" }}
             label="Discord"
           />
+          */}
           <SocialIcon
-            url="#"
+            url="https://github.com/Goshen-Digital-Group/onchainbets"
             network="github"
             bgColor="#ffffffff"
             fgColor="#000000ff"
@@ -112,7 +114,7 @@ export default function Footer() {
         <VersionSection style={{ fontWeight: "bold", color: "#fff" }}>
           Version:{" "}
           <a
-            href="#"
+            href="https://github.com/Goshen-Digital-Group/onchainbets"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: "#fff", textDecoration: "none" }}

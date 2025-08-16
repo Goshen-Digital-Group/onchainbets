@@ -1,15 +1,18 @@
 // src/components/GameCard.tsx
-import React from 'react';
-import { GameBundle } from 'gamba-react-ui-v2';
-import { NavLink, useLocation } from 'react-router-dom';
-import styled, { keyframes } from 'styled-components';
+import React from "react";
+import { GameBundle } from "gamba-react-ui-v2";
+import { NavLink, useLocation } from "react-router-dom";
+import styled, { keyframes } from "styled-components";
 
 const tileAnimation = keyframes`
   0%   { background-position: -100px 100px; }
   100% { background-position: 100px -100px; }
 `;
 
-const StyledGameCard = styled(NavLink)<{ $small: boolean; $background: string }>`
+const StyledGameCard = styled(NavLink)<{
+  $small: boolean;
+  $background: string;
+}>`
   position: relative;
   display: flex;
   justify-content: center;
@@ -18,7 +21,7 @@ const StyledGameCard = styled(NavLink)<{ $small: boolean; $background: string }>
   pointer-events: auto; /* if you need clicks */
 
   width: 100%;
-  aspect-ratio: ${({ $small }) => ($small ? '1/.5' : '1/.6')};
+  aspect-ratio: ${({ $small }) => ($small ? "1/.5" : "1/.6")};
   background: ${({ $background }) => $background};
   background-size: cover;
   background-position: center;
@@ -105,7 +108,7 @@ export function GameCard({
 }: {
   game: GameBundle & { meta: { tag?: string; [key: string]: any } };
 }) {
-  const small = useLocation().pathname !== '/';
+  const small = useLocation().pathname !== "/";
 
   return (
     <StyledGameCard
