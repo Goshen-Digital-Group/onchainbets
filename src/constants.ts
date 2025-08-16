@@ -24,7 +24,7 @@ export const PLATFORM_CREATOR_ADDRESS = new PublicKey(
 export const EXPLORER_URL = "https://explorer.gamba.so";
 
 // Platform URL - Appears in ShareModal
-export const PLATFORM_SHARABLE_URL = "play.gamba.so";
+export const PLATFORM_SHARABLE_URL = "play.onchainbets.fun";
 
 // Creator fee (in %)
 export const PLATFORM_CREATOR_FEE = 0.01; // 1% !!max 7%!!
@@ -69,29 +69,31 @@ export const DEFAULT_POOL = POOLS[0];
  * Alternatively, we can provide a fetcher method to automatically fetch metdata. See TOKEN_METADATA_FETCHER below.
  */
 
-
-export const TOKEN_METADATA: (Partial<TokenMeta> & {mint: PublicKey})[] = [
+export const TOKEN_METADATA: (Partial<TokenMeta> & { mint: PublicKey })[] = [
   {
     mint: FAKE_TOKEN_MINT,
-    name: 'Fake',
-    symbol: 'FAKE',
-    image: '/fakemoney.png',
+    name: "Fake",
+    symbol: "FAKE",
+    image: "/fakemoney.png",
     baseWager: 1e9,
     decimals: 9,
     usdPrice: 0,
   },
   {
-    mint: new PublicKey('85VBFQZC9TZkfaptBWjvUw7YbZjy52A6mjtPGjstQAmQ'),
-    name: 'W',
-    symbol: 'Wormhole',
-    image: 'https://wormhole.com/token.png',
+    mint: new PublicKey("85VBFQZC9TZkfaptBWjvUw7YbZjy52A6mjtPGjstQAmQ"),
+    name: "W",
+    symbol: "Wormhole",
+    image: "https://wormhole.com/token.png",
     baseWager: 1e6,
     decimals: 6,
     usdPrice: 0,
   },
-]
+];
 
-type TokenMetaWithMinted = Partial<TokenMeta> & { mint: PublicKey; minted?: boolean };
+type TokenMetaWithMinted = Partial<TokenMeta> & {
+  mint: PublicKey;
+  minted?: boolean;
+};
 export const FETCH_TOKEN_METADATA: TokenMetaWithMinted[] = [
   {
     mint: new PublicKey("So11111111111111111111111111111111111111112"),
@@ -104,25 +106,6 @@ export const FETCH_TOKEN_METADATA: TokenMetaWithMinted[] = [
     usdPrice: 192.55,
   },
   {
-    mint: new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"),
-    name: "USDC",
-    symbol: "USDC",
-    image:
-      "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v/logo.png",
-    baseWager: 1e6,
-    decimals: 6,
-    usdPrice: 0.9999,
-  },
-  {
-    mint: new PublicKey("JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN"),
-    name: "Jupiter",
-    symbol: "JUP",
-    image: "https://static.jup.ag/jup/icon.png",
-    baseWager: 1e9,
-    decimals: 9,
-    usdPrice: 0.000932,
-  },
-  {
     mint: new PublicKey("DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263"),
     name: "Bonk",
     symbol: "BONK",
@@ -131,6 +114,25 @@ export const FETCH_TOKEN_METADATA: TokenMetaWithMinted[] = [
     baseWager: 1e9,
     decimals: 9,
     usdPrice: 0.00002806,
+  },
+  {
+    mint: new PublicKey("pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn"),
+    name: "PUMP",
+    symbol: "PUMP",
+    image:
+      "https://dd.dexscreener.com/ds-data/tokens/solana/pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn.png?size=lg&key=821e9b",
+    baseWager: 1e9,
+    decimals: 6,
+    usdPrice: 0.00347,
+  },
+  {
+    mint: new PublicKey("JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN"),
+    name: "Jupiter",
+    symbol: "JUP",
+    image: "https://static.jup.ag/jup/icon.png",
+    baseWager: 1e9,
+    decimals: 6,
+    usdPrice: 0.5121,
   },
 ];
 
@@ -156,8 +158,9 @@ export async function updateTokenPrices() {
   // CoinGecko IDs for supported tokens
   const coingeckoMap: { [mint: string]: string } = {
     So11111111111111111111111111111111111111112: "solana",
+    pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn: "pump-fun",
     EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v: "usd-coin",
-    JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN: "jupiter-exchange",
+    JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN: "jupiter-exchange-solana",
     DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263: "bonk",
   };
 
@@ -205,8 +208,7 @@ export const ENABLE_LEADERBOARD = true;
 export const ENABLE_TROLLBOX = true; // Requires setup in vercel (check tutorial in discord)
 
 /** If true, the featured game is fully playable inline on the dashboard */
-export const FEATURED_GAME_INLINE = true;
-export const FEATURED_GAME_ID: string | undefined = "jackpot"; // ← put game id or leave undefined
+export const FEATURED_GAME_INLINE = false;
+export const FEATURED_GAME_ID: string | undefined = "mines"; // ← put game id or leave undefined
 
 export { FAKE_TOKEN_MINT };
-

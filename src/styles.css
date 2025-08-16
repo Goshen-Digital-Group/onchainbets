@@ -11,13 +11,13 @@
 
   --gamba-ui-button-default-background: #006405;
   --gamba-ui-button-default-background-hover: #14be0e;
-  --gamba-ui-button-default-color: white;
+  --gamba-ui-button-default-color: rgb(255, 255, 255);
 
   --gamba-ui-button-main-background: #51ff8b;
   --gamba-ui-button-main-color: rgb(0, 0, 0);
   --gamba-ui-button-main-background-hover: #64ff92c5;
 
-  --gamba-ui-input-background: #0e0e16;
+  --gamba-ui-input-background: #001f07;
   --gamba-ui-input-color: #ffffff;
   --gamba-ui-input-background-hover: #11111d;
 }

@@ -26,7 +26,7 @@ export const SettingControls = styled.div`
     opacity: .2;
     transition: opacity .2s;
     padding: 5px;
-    text-shadow: 0 0 1px #00000066;
+    text-shadow: 0 0 1px #00ff2266;
     &:hover { opacity: 1; }
   }
 `
@@ -42,7 +42,7 @@ export const Splash = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 5;
-  background: #0c0c11;
+  background: #1f5300ff;
   font-size: 42px;
   font-weight: bold;
 `
@@ -50,7 +50,7 @@ export const Splash = styled.div`
 export const Screen = styled.div`
   position: relative;
   flex-grow: 1;
-  background: #0c0c11;
+  background: #023500ff;
   border-radius: 10px;
   overflow: hidden;
   transition: height .2s ease;
@@ -84,7 +84,7 @@ export const StyledLoadingIndicator = styled.div<{$active: boolean}>`
     width: 25%; height: 100%;
     animation: ${loadingAnimation} ease infinite .5s;
     opacity: 0;
-    background: #9564ff;
+    background: #76ff64ff;
     transition: opacity .5s;
     ${(props) => props.$active && css`opacity: 1;`}
   }
@@ -92,7 +92,7 @@ export const StyledLoadingIndicator = styled.div<{$active: boolean}>`
 
 export const Controls = styled.div`
   width: 100%;
-  background: rgb(26, 27, 40);
+  background: rgba(24, 54, 20, 1);
   padding: 20px;
   color: white;
   border-radius: 10px;

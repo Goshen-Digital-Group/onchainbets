@@ -27,6 +27,7 @@ const TOKEN_METADATA_FETCHER: TokenMetaFetcher = async () => {
       name: token.name ?? '',
       symbol: token.symbol ?? '',
       decimals: token.decimals ?? 0, // Ensure decimals is always a number
+      baseWager: token.baseWager ?? 0, // Ensure baseWager is always a number
     }
     return acc
   }, {})
