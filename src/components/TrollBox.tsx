@@ -39,7 +39,7 @@ const Wrapper = styled.div<{ $isMinimized: boolean }>`
   right: 20px;
   z-index: 998;
   border-radius: ${({ $isMinimized }) => ($isMinimized ? '50%' : '12px')};
-  background: ${({ $isMinimized }) => ($isMinimized ? '#5e47ff' : 'rgba(28,28,35,0.85)')};
+  background: ${({ $isMinimized }) => ($isMinimized ? '#035700ff' : 'rgba(2, 44, 2, 0.85)')};
   border: 1px solid
     ${({ $isMinimized }) => ($isMinimized ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.1)')};
   color: #eee;
@@ -180,7 +180,7 @@ const Timestamp = styled.span`
 const InputRow = styled.div`
   display: flex;
   border-top: 1px solid rgba(255,255,255,0.08);
-  background: rgba(0,0,0,0.1);
+  background: rgba(1, 151, 8, 0.1);
   flex-shrink: 0;
 `
 
@@ -200,7 +200,7 @@ const TextInput = styled.input`
 `
 
 const SendBtn = styled.button`
-  background: #5e47ff;
+  background: #036808ff;
   border: none;
   padding: 0 12px;
   cursor: pointer;
@@ -328,7 +328,7 @@ export default function TrollBox() {
       )}
       <ContentContainer $isMinimized={isMinimized}>
         <Header onClick={toggleMinimize}>
-          <HeaderTitle>Troll Box</HeaderTitle>
+          <HeaderTitle>Chat</HeaderTitle>
           <HeaderStatus>
             {messages.length ? `${messages.length} msgs` : 'Connecting…'}
           </HeaderStatus>

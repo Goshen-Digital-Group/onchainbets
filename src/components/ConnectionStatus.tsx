@@ -14,7 +14,7 @@ function useThrottle(callback: () => void, delay: number) {
 import { useCurrentPool, useCurrentToken } from "gamba-react-ui-v2";
 import ReactDOM from "react-dom";
 import { FAKE_TOKEN_MINT } from "gamba-react-ui-v2";
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
 import React from "react";
 
 // Casino animations
@@ -60,13 +60,18 @@ const StatusButton = styled.button<{ $hovered: boolean }>`
   backdrop-filter: blur(10px);
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.2), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 255, 0, 0.2),
+      transparent
+    );
     transition: left 0.5s ease;
   }
 
@@ -80,7 +85,9 @@ const StatusButton = styled.button<{ $hovered: boolean }>`
     }
   }
 
-  ${({ $hovered }) => $hovered && `
+  ${({ $hovered }) =>
+    $hovered &&
+    `
     border-color: #15ff00ff;
     box-shadow: 0 0 20px rgba(0, 255, 21, 0.4);
     transform: translateY(-2px);
@@ -116,21 +123,28 @@ const ModalContentStyled = styled.div`
   box-shadow: 0 0 40px rgba(0, 255, 34, 0.12);
   animation: ${neonPulse} 3s ease-in-out infinite alternate;
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
-      radial-gradient(circle at 20% 20%, rgba(0, 255, 34, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(0, 255, 42, 0.08) 0%, transparent 50%);
+    background: radial-gradient(
+        circle at 20% 20%,
+        rgba(0, 255, 34, 0.08) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 80%,
+        rgba(0, 255, 42, 0.08) 0%,
+        transparent 50%
+      );
     pointer-events: none;
     z-index: -1;
     border-radius: 24px;
   }
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -155,13 +169,11 @@ const ModalTitle = styled.h2`
   color: #00ff0dff;
   text-align: center;
   margin-bottom: 1.5rem;
-  text-shadow: 
-    0 0 10px #00ff0dff,
-    0 0 20px #15ff00ff,
+  text-shadow: 0 0 10px #00ff0dff, 0 0 20px #15ff00ff,
     2px 2px 4px rgba(0, 0, 0, 0.8);
   position: relative;
   &::before {
-    content: '🔌';
+    content: "🔌";
     position: absolute;
     left: -2.5rem;
     top: 50%;
@@ -170,7 +182,7 @@ const ModalTitle = styled.h2`
     animation: ${sparkle} 2s ease-in-out infinite;
   }
   &::after {
-    content: '⚡';
+    content: "⚡";
     position: absolute;
     right: -2.5rem;
     top: 50%;
@@ -180,7 +192,9 @@ const ModalTitle = styled.h2`
   }
 `;
 
-const StatusItem = styled.div<{ status: 'Online' | 'Issues' | 'Offline' | 'Secured' | 'Unsecured' | 'Loading' }>`
+const StatusItem = styled.div<{
+  status: "Online" | "Issues" | "Offline" | "Secured" | "Unsecured" | "Loading";
+}>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -203,27 +217,27 @@ const StatusItem = styled.div<{ status: 'Online' | 'Issues' | 'Offline' | 'Secur
     font-weight: bold;
     text-transform: uppercase;
     font-size: 0.8rem;
-    
+
     ${({ status }) => {
-      switch(status) {
-        case 'Online':
-        case 'Secured':
+      switch (status) {
+        case "Online":
+        case "Secured":
           return `
             background: rgba(34, 197, 94, 0.2);
             color: #22c55e;
             border: 1px solid rgba(34, 197, 94, 0.3);
             box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
           `;
-        case 'Issues':
-        case 'Loading':
+        case "Issues":
+        case "Loading":
           return `
             background: rgba(234, 179, 8, 0.2);
             color: #eab308;
             border: 1px solid rgba(234, 179, 8, 0.3);
             box-shadow: 0 0 10px rgba(234, 179, 8, 0.3);
           `;
-        case 'Offline':
-        case 'Unsecured':
+        case "Offline":
+        case "Unsecured":
           return `
             background: rgba(239, 68, 68, 0.2);
             color: #ef4444;
@@ -260,7 +274,6 @@ const CloseButton = styled.button`
 const CUSTOM_RPC = import.meta.env.VITE_RPC_ENDPOINT;
 const PLATFORM_CREATOR = import.meta.env.VITE_PLATFORM_CREATOR;
 const API_KEY = import.meta.env.VITE_API_KEY;
-
 
 export default function ConnectionStatus() {
   const [showModal, setShowModal] = useState(false);
@@ -357,35 +370,42 @@ export default function ConnectionStatus() {
   // Determine status light color based on all checks
   let statusLightColor = "#ff4d4f"; // default red
   const isLoading =
-    transactionStatus === "Loading" ||
-    rpcHealth.isHealthy === undefined;
-
+    transactionStatus === "Loading" || rpcHealth.isHealthy === undefined;
 
   useEffect(() => {
-    console.log(`✅ RPC Health Status: ${rpcHealth.isHealthy ? "Healthy" : "Unhealthy"}`);
-    console.log(`📶 RPC Ping Time: ${rpcPing !== null ? rpcPing + " ms" : "Unavailable"}`);
+    console.log(
+      `✅ RPC Health Status: ${rpcHealth.isHealthy ? "Healthy" : "Unhealthy"}`
+    );
+    console.log(
+      `📶 RPC Ping Time: ${rpcPing !== null ? rpcPing + " ms" : "Unavailable"}`
+    );
     console.log(`🔄 Transaction Status: ${transactionStatus || "Unknown"}`);
-    console.log(`🕒 Recent Transaction: ${lastTxTime ?? "No recent transactions"}`);
-    console.log(`🏊 Pool Address: ${pool?.publicKey?.toBase58() ?? "Not connected"}`);
+    console.log(
+      `🕒 Recent Transaction: ${lastTxTime ?? "No recent transactions"}`
+    );
+    console.log(
+      `🏊 Pool Address: ${pool?.publicKey?.toBase58() ?? "Not connected"}`
+    );
     console.log(`💰 Token Name: ${token?.name ?? "N/A"}`);
     console.log(`🎮 Session Type: ${sessionType}`);
-  }, [rpcHealth, rpcPing, transactionStatus, lastTxTime, pool, token, sessionType]);
+  }, [
+    rpcHealth,
+    rpcPing,
+    transactionStatus,
+    lastTxTime,
+    pool,
+    token,
+    sessionType,
+  ]);
 
   const ModalContent = (
-    <StatusModal
-      role="dialog"
-      aria-modal="true"
-    >
-        
-      <div style={{ pointerEvents: 'auto' }}>
+    <StatusModal role="dialog" aria-modal="true">
+      <div style={{ pointerEvents: "auto" }}>
         <CloseButton aria-label="Close" onClick={() => setShowModal(false)}>
-            ×
-          </CloseButton>
+          ×
+        </CloseButton>
         <ModalContentStyled>
-          
-          <ModalTitle>
-            Connection Status
-          </ModalTitle>
+          <ModalTitle>Connection Status</ModalTitle>
 
           <StatusItem status={transactionStatus || "Loading"}>
             <span className="label">🔒 Transactions:</span>
@@ -395,7 +415,7 @@ export default function ConnectionStatus() {
           {lastTxTime && (
             <StatusItem status="Online">
               <span className="label">⏰ Recent Transaction:</span>
-              <span style={{ fontSize: '0.8rem', color: '#ccc' }}>
+              <span style={{ fontSize: "0.8rem", color: "#ccc" }}>
                 {lastTxTime}
               </span>
             </StatusItem>
@@ -418,7 +438,13 @@ export default function ConnectionStatus() {
           {pool && (
             <StatusItem status="Online">
               <span className="label">🏊 Pool:</span>
-              <span style={{ fontSize: '0.7rem', color: '#ccc', fontFamily: 'monospace' }}>
+              <span
+                style={{
+                  fontSize: "0.7rem",
+                  color: "#ccc",
+                  fontFamily: "monospace",
+                }}
+              >
                 {pool.publicKey?.toBase58().slice(0, 8)}...
               </span>
             </StatusItem>

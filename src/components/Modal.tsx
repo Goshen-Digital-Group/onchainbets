@@ -1,10 +1,10 @@
-import React from 'react'
-import { Icon } from './Icon'
-import useOutsideClick from '../hooks/useOnClickOutside'
-import styled from 'styled-components'
+import React from "react";
+import { Icon } from "./Icon";
+import useOutsideClick from "../hooks/useOnClickOutside";
+import styled from "styled-components";
 
 interface Props extends React.PropsWithChildren {
-  onClose?: () => void
+  onClose?: () => void;
 }
 
 const Container = styled.div`
@@ -13,13 +13,14 @@ const Container = styled.div`
   min-height: calc(100vh - 6rem);
   align-items: center;
   justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
 
   @media (max-width: 600px) {
     padding: 8px 0;
     min-height: 100vh;
     align-items: flex-start;
   }
-`
+`;
 
 const Wrapper = styled.div`
   @keyframes wrapper-appear2 {
@@ -54,7 +55,7 @@ const Wrapper = styled.div`
     box-shadow: none;
     background: rgba(24, 24, 24, 1);
   }
-`
+`;
 
 const StyledModal = styled.div`
   @keyframes appear {
@@ -127,32 +128,36 @@ const StyledModal = styled.div`
       top: 8px;
       width: 2.2em;
       height: 2.2em;
-      background: rgba(0,0,0,0.1);
+      background: rgba(0, 0, 0, 0.1);
     }
   }
-`
+`;
 
 export function Modal({ children, onClose }: Props) {
   React.useEffect(() => {
-    const oldOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
+    const oldOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = oldOverflow
-    }
-  }, [])
+      document.body.style.overflow = oldOverflow;
+    };
+  }, []);
 
-  const ref = React.useRef<HTMLDivElement>(null!)
+  const ref = React.useRef<HTMLDivElement>(null!);
 
   useOutsideClick(ref, () => {
-    if (onClose) onClose()
-  })
+    if (onClose) onClose();
+  });
 
   return (
     <StyledModal>
       <Container>
         <Wrapper ref={ref}>
           {onClose && (
-            <button className="close" onClick={onClose} aria-label="Close modal">
+            <button
+              className="close"
+              onClick={onClose}
+              aria-label="Close modal"
+            >
               <Icon.Close2 />
             </button>
           )}
@@ -160,5 +165,5 @@ export function Modal({ children, onClose }: Props) {
         </Wrapper>
       </Container>
     </StyledModal>
-  )
+  );
 }

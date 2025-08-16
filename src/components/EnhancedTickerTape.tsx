@@ -371,7 +371,7 @@ const ChangeIndicator = styled.span<{ $isIncreasing: boolean }>`
 const DataSourceBadge = styled.span<{ $isLive: boolean }>`
   position: absolute;
   top: -2px;
-  right: -2px;
+  right: -16px;
   font-size: 8px;
   background: ${(props) => (props.$isLive ? "#22c55e" : "#00ff4cff")};
   color: #fff;

@@ -1,24 +1,22 @@
-import React from 'react'
-import styled from 'styled-components'
-import { SlideSection } from '../../components/Slider'
-import { GAMES } from '../../games'
-import { GameCard } from './GameCard'
+import React from "react";
+import styled from "styled-components";
+import { SlideSection } from "../../components/Slider";
+import { GAMES } from "../../games";
+import { GameCard } from "./GameCard";
 // src/sections/Dashboard/Dashboard.tsx
-import FeaturedInlineGame from './FeaturedInlineGame'
-import { EnhancedTickerTape } from '../../components/EnhancedTickerTape'
-
-
+import FeaturedInlineGame from "./FeaturedInlineGame";
+import { EnhancedTickerTape } from "../../components/EnhancedTickerTape";
 
 export function GameSlider() {
   return (
     <SlideSection>
       {GAMES.map((game) => (
-        <div key={game.id} style={{ width: '160px', display: 'flex' }}>
+        <div key={game.id} style={{ width: "160px", display: "flex" }}>
           <GameCard game={game} />
         </div>
       ))}
     </SlideSection>
-  )
+  );
 }
 
 const Grid = styled.div`
@@ -34,7 +32,7 @@ const Grid = styled.div`
   @media (min-width: 1200px) {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
-`
+`;
 
 export function GameGrid() {
   return (
@@ -43,17 +41,25 @@ export function GameGrid() {
         <GameCard key={game.id} game={game} />
       ))}
     </Grid>
-  )
+  );
 }
-
 
 export default function Dashboard() {
   return (
     <>
       <EnhancedTickerTape />
       <FeaturedInlineGame />
-      <h2 style={{ textAlign: 'center' }}>Games</h2>
+      <h1
+        style={{
+          textAlign: "center",
+          color: "#fff",
+          fontSize: "50px",
+          textShadow: "0 0 24px #000, 0 0 24px #000, 0 0 24px #000",
+        }}
+      >
+        Games
+      </h1>
       <GameGrid />
     </>
-  )
+  );
 }
