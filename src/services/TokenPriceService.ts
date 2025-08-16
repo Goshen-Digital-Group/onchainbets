@@ -1,4 +1,4 @@
-import { TOKEN_METADATA, updateTokenPrices } from '../constants';
+import { FETCH_TOKEN_METADATA, updateTokenPrices } from '../constants';
 
 export interface TokenPrice {
   mintAddress: string;
@@ -53,7 +53,7 @@ class TokenPriceService {
     try {
       // Store original prices for comparison
       const originalPrices = new Map<string, number>();
-      TOKEN_METADATA.forEach(token => {
+      FETCH_TOKEN_METADATA.forEach(token => {
         const mintAddress = token.mint.toBase58();
         if (token.usdPrice) {
           originalPrices.set(mintAddress, token.usdPrice);
@@ -64,7 +64,7 @@ class TokenPriceService {
       await updateTokenPrices();
 
       // Check what we got and create price objects
-      TOKEN_METADATA.forEach(token => {
+      FETCH_TOKEN_METADATA.forEach(token => {
         const mintAddress = token.mint.toBase58();
         const symbol = token.symbol || 'UNK';
         const originalPrice = originalPrices.get(mintAddress);
@@ -114,7 +114,7 @@ class TokenPriceService {
       console.error('💥 Failed to update token prices:', error);
       
       // If API fails completely, use fallback prices from constants
-      TOKEN_METADATA.forEach(token => {
+      FETCH_TOKEN_METADATA.forEach(token => {
         const mintAddress = token.mint.toBase58();
         const symbol = token.symbol || 'UNK';
         const fallbackPrice = this.getFallbackPrice(mintAddress);
@@ -141,7 +141,7 @@ class TokenPriceService {
    * Get fallback price from constants
    */
   private getFallbackPrice(mintAddress: string): number {
-    const token = TOKEN_METADATA.find(t => t.mint.toBase58() === mintAddress);
+    const token = FETCH_TOKEN_METADATA.find(t => t.mint.toBase58() === mintAddress);
     return token?.usdPrice || 0;
   }
 
