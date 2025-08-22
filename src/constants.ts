@@ -106,16 +106,6 @@ export const FETCH_TOKEN_METADATA: TokenMetaWithMinted[] = [
     usdPrice: 192.55,
   },
   {
-    mint: new PublicKey("DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263"),
-    name: "Bonk",
-    symbol: "BONK",
-    image:
-      "https://quei6zhlcfsxdfyes577gy7bkxmuz7qqakyt72xlbkyh7fysmoza.arweave.net/hQiPZOsRZXGXBJd_82PhVdlM_hACsT_q6wqwf5cSY7I",
-    baseWager: 1e9,
-    decimals: 9,
-    usdPrice: 0.00002806,
-  },
-  {
     mint: new PublicKey("pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn"),
     name: "PUMP",
     symbol: "PUMP",
@@ -124,6 +114,16 @@ export const FETCH_TOKEN_METADATA: TokenMetaWithMinted[] = [
     baseWager: 1e9,
     decimals: 6,
     usdPrice: 0.00347,
+  },
+    {
+    mint: new PublicKey("DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263"),
+    name: "Bonk",
+    symbol: "BONK",
+    image:
+      "https://quei6zhlcfsxdfyes577gy7bkxmuz7qqakyt72xlbkyh7fysmoza.arweave.net/hQiPZOsRZXGXBJd_82PhVdlM_hACsT_q6wqwf5cSY7I",
+    baseWager: 1e9,
+    decimals: 9,
+    usdPrice: 0.00002806,
   },
   {
     mint: new PublicKey("JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN"),
