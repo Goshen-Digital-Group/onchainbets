@@ -138,7 +138,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 -- **Website**: [onchainbets.fun](https://onchainbets.fun)
 -- **Documentation**: [onchainbets.fun/docs](https://www.onchainbets.fun/docs)
 - **X/Twitter Community**: [Join our community](https://x.com/i/communities/1959009958617334252)
-- **X/Twitter**: [Follow us](https://x.com/i/communities/1958007698534068643/)
+- **X/Twitter**: [Follow us](https://x.com/Onchainbetsfun)
 
 ## ⚠️ Disclaimer
 
