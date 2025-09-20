@@ -26,7 +26,7 @@ export default async function handler(req: Request): Promise<Response> {
     }
     return new Response('Method Not Allowed', { status: 405 })
   } catch (err: any) {
-    console.error('[chat API error]', err);
+    console.error('[chat API error]', err?.stack || err);
     return new Response('Internal Error', { status: 500 })
   }
 }
