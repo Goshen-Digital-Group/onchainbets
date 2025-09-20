@@ -328,7 +328,7 @@ export default function TrollBox() {
       )}
       <ContentContainer $isMinimized={isMinimized}>
         <Header onClick={toggleMinimize}>
-          <HeaderTitle>Chat</HeaderTitle>
+          <HeaderTitle>Community Chat</HeaderTitle>
           <HeaderStatus>
             {messages.length ? `${messages.length} msgs` : 'Connecting…'}
           </HeaderStatus>
