@@ -48,6 +48,39 @@ const StyledTokenButton = styled.button`
   }
 `;
 
+const FloatingReminder = styled.div`
+  position: absolute; /* Position relative to the button's container */
+  top: 100%; /* Position it below the button */
+  left: 50%; /* Center it horizontally relative to the button */
+  transform: translateX(-50%) translateY(10px); /* Add spacing below the button */
+  background: #000;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  white-space: nowrap;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+
+  /* Add a small arrow pointing up to the button */
+  &::after {
+    content: "";
+    position: absolute;
+    top: -6px; /* Position the arrow above the reminder */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent #000 transparent; /* Arrow pointing up */
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+    transform: translateX(-50%) translateY(8px); /* Adjust spacing for smaller screens */
+  }
+`;
+
 function TokenImage({ mint, ...props }: { mint: PublicKey }) {
   const meta = useTokenMeta(mint);
   return <StyledTokenImage src={meta.image} {...props} />;
@@ -66,7 +99,7 @@ function TokenSelectItem({ mint }: { mint: PublicKey }) {
 export default function TokenSelect() {
   const [visible, setVisible] = React.useState(false);
   const [warning, setWarning] = React.useState(false);
-  // Allow real plays override via query param/localStorage for deployed testing
+  const [showReminder, setShowReminder] = React.useState(true); // State to control the floating reminder
   const [allowRealPlays, setAllowRealPlays] = React.useState(false);
   const context = React.useContext(GambaPlatformContext);
   const selectedToken = useCurrentToken();
@@ -98,6 +131,14 @@ export default function TokenSelect() {
       const saved = localStorage.getItem("allowRealPlays");
       setAllowRealPlays(saved === "1");
     } catch {}
+  }, []);
+
+  // Hide the floating reminder after 6 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowReminder(false);
+    }, 6000);
+    return () => clearTimeout(timer);
   }, []);
 
   const selectPool = (pool: PoolToken) => {
@@ -134,7 +175,8 @@ export default function TokenSelect() {
           </GambaUi.Button>
         </Modal>
       )}
-      <div style={{ position: "relative" }}>
+      <div style={{ position: "relative" }}> {/* Ensure the parent container is relative */}
+        {showReminder && <FloatingReminder>You can select available tokens here</FloatingReminder>}
         <GambaUi.Button onClick={click}>
           {selectedToken && (
             <StyledToken>
@@ -144,7 +186,6 @@ export default function TokenSelect() {
           )}
         </GambaUi.Button>
         <Dropdown visible={visible}>
-          {/* Mount balances for list items only when dropdown is visible to avoid unnecessary watchers */}
           {visible &&
             POOLS.map((pool, i) => (
               <StyledTokenButton onClick={() => selectPool(pool)} key={i}>

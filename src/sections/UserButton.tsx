@@ -22,23 +22,13 @@ const NeonUserButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 120px;
+  width: 40px;
   height: 40px;
-  border-radius: 12px;
-  background: linear-gradient(90deg, #00ff37ff, #00ff0dff);
-  box-shadow: 0 0 24px #00ff37aa, 0 0 48px #00ff0daa;
-  border: 2px solid #00ff37;
   position: relative;
   transition: background 0.2s, box-shadow 0.2s;
   font-weight: bold;
   color: #fff;
   letter-spacing: 0.5px;
-  &:hover,
-  &:focus {
-    background: linear-gradient(90deg, #00ff0dff, #00ff37ff);
-    box-shadow: 0 0 32px #00ff37cc, 0 0 64px #00ff0dcc;
-    outline: none;
-  }
 `;
 import ConnectionStatus from "../components/ConnectionStatus";
 
