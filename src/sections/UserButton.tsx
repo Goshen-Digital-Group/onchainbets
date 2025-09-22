@@ -22,7 +22,7 @@ const NeonUserButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
+  width: 80px;
   height: 40px;
   position: relative;
   transition: background 0.2s, box-shadow 0.2s;
@@ -294,17 +294,46 @@ export function UserButton() {
               }}
             />
           ) : (
-            <span
-              style={{
-                color: "#000000ff",
-                fontWeight: "bold",
-                fontSize: "1rem",
-                textAlign: "center",
-                width: "100%",
-              }}
-            >
-              Connect
-            </span>
+            <>
+              <span
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "#ffffffff",
+                  fontWeight: "bold",
+                  fontSize: "1rem",
+                  textAlign: "center",
+                  width: "100%",
+                  height: "32px",
+                  borderRadius: "50%",
+                  transition: "background 0.2s, box-shadow 0.2s, transform 0.2s",
+                  cursor: "pointer",
+                }}
+                className="user-connect-btn"
+              >
+                Connect
+              </span>
+              <style>
+                {`
+                .user-connect-btn:hover {
+                  transform: scale(1.08);
+                }
+                @media (max-width: 600px) {
+                  .user-connect-btn {
+                  font-size: 0.85rem;
+                  height: 28px;
+                  }
+                }
+                @media (min-width: 900px) {
+                  .user-connect-btn {
+                  font-size: 1.15rem;
+                  height: 36px;
+                  }
+                }
+                `}
+              </style>
+            </>
           )}
         </NeonUserButton>
       </div>
